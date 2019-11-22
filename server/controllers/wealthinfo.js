@@ -16,7 +16,7 @@ module.exports.wealthFormSave = (req,res,next) => {
     wealthform.userId = req.body.userId;
 
     wealthform.save().then( data =>{
-        return res.status(200).json({ status: true, data: data });
+        return res.status(200).json({ status: true, data: data, message: 'Saved Succesfully' });
     }).catch(err => {
         return res.status(400).send(err);
     });
