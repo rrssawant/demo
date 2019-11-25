@@ -30,7 +30,7 @@ var wealthFormSchema = new mongoose.Schema({
     userId : ObjectId
     
 });
-wealthFormSchema.index({income: 'text',expenses:'text',insurance: 'text'});
+// wealthFormSchema.index({income: 'text',expenses:'text',insurance: 'text'});
 
 
 mongoose.model('WealthForm', wealthFormSchema);

@@ -10,10 +10,10 @@ var loginInfoSchema = new mongoose.Schema({
     otp : {
         type: String
     },
-    loginStatus : {
-        type: Boolean,
-        default: false
-    }
+    // loginStatus : {
+    //     type: Boolean,
+    //     default: false
+    // }
 });
 
 

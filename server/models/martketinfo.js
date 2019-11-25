@@ -1,25 +1,21 @@
 const mongoose = require('mongoose');
 
 var marketDataSchema = new mongoose.Schema({
-    income: {
+    name: {
         type: String,
-        required: 'income can\'t be empty'
     },
-    expenses : {
+    description : {
         type: String,
-        required: 'expenses can\'t be empty'
     },
-    insurance : {
+    type : {
         type: String
     },
-    investment : {
-        type: String
-    },
-    nominees : {
+    amount : {
         type: String
     }
 });
 // volunteeringSchema.index({email: 'text'});
+marketDataSchema.index({name: 'text',type: 'text',amount: 'text'});
 
 
 mongoose.model('MarketData', marketDataSchema);

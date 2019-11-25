@@ -6,6 +6,7 @@ const cors = require('cors');
 require('./models/wealthForm');
 require('./models/signupinfo');
 require('./models/sellersinfo');
+require('./models/martketinfo');
 
 const rtsIndex = require('./routes/index.router');
 
