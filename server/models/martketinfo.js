@@ -14,7 +14,8 @@ var marketDataSchema = new mongoose.Schema({
         type: String
     }
 });
-// volunteeringSchema.index({email: 'text'});
+
+
 marketDataSchema.index({name: 'text',type: 'text',amount: 'text'});
 
 

@@ -4,7 +4,6 @@
 
 const mongoose = require('mongoose')
 const LoginInfo = mongoose.model('LoginInfo')
-// const Volunteering =   mongoose.model('Volunteering');
 const nodemailer = require("nodemailer");
 var ObjectId = mongoose.Types.ObjectId;
 
@@ -27,8 +26,8 @@ module.exports.otpLogin = (req,res,next) => {
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'smtptest@dweb.in',
-            pass: 'Dynamic@123'
+            user: 'enter your user',
+            pass: 'enter your password'
         },
         tls: {
             rejectUnauthorized: false
@@ -54,7 +53,7 @@ module.exports.otpLogin = (req,res,next) => {
                     LoginInfo.update(
                         { email: req.body.email },
                         {
-                            $set: { otp: loginInfo.otp}
+                            $set: { otp: loginInfo.otp ,fullName :req.body.fullName}
                         }
                     ).then( data =>{
                         return  res.status(200).json({ status: true, data: loginData ,message: 'Otp send please check mail'})

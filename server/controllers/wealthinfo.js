@@ -43,20 +43,6 @@ module.exports.wealthFormSave = (req,res,next) => {
     });
 }
 
-//   **  seller add api   ** //
-
-// module.exports.sellerDataSave = (req,res,next) => {
-//     var sellerData = new SellerInfo();
-//     sellerData.sellerList = req.body.sellerList;
-//     sellerData.marketId = req.body.marketId;
-    
-//     sellerData.save().then( data =>{
-//         return res.status(200).json({ status: true, data: data ,message: 'Saved Succesfully' });
-//     }).catch(err => {
-//         return res.status(400).send(err);
-//     });
-// }
-
 
 
 //   **  market add api   ** //
@@ -89,14 +75,14 @@ module.exports.marketDataSave = (req,res,next) => {
 
 
 module.exports.searchData = (req,res,next) =>{
-    MarketData.find({ $text: { $search: req.query.data}}).then(data => {
+      MarketData.find({$or: [ { name:new RegExp(req.query.data, 'i')} , { description:new RegExp(req.query.data, 'i')} , { type:new RegExp(req.query.data, 'i')} ,{ amount:new RegExp(req.query.data, 'i')}]}).then(data => {
         if (data) {
             return res.status(200).json({ status: true, data: data });
         } else {
             return res.status(404).json({ status: false, message: 'Error in Retriving Resum.' });
         }
     }).catch(err =>{
-        return res.status(404).json({ status: false, message: 'Error in Retriving Resum.' });
+        return res.status(404).json({ status: false, message: 'Error in Retrieving Data.' });
 
     }); 
 }
@@ -110,7 +96,7 @@ module.exports.getSellersData = (req,res,next) =>{
         }
         return res.status(200).json({ status: true, data: data });
     }).catch(err =>{
-        return res.status(500).json({ status: false, message: 'Error in Retriving Resum.' });
+        return res.status(500).json({ status: false, message: 'Error in Retrieving Data.' });
     });
      
 }
